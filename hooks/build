@@ -1,4 +1,11 @@
 #!/bin/bash
+echo "=> Building petclinic"
+docker run -i --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn clean install
+
+echo "=> Pulling in cached image"
+docker pull tjwatson/liberty-spring-petclinic || true
+docker images
+
 echo "=> Building petclinic Docker image"
 docker build --pull --cache-from tjwatson/liberty-spring-petclinic --tag tjwatson/liberty-spring-petclinic .
 
