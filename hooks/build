@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "=> Building petclinic Docker image"
+docker build --pull --cache-from tjwatson/liberty-spring-petclinic --tag tjwatson/liberty-spring-petclinic .
+
